@@ -86,8 +86,6 @@
   "typescriptReactArrowFunctionExportComponent": {
     "prefix": "tsrafce",
     "body": [
-      "import React from 'react'",
-      "",
       "type Props = {}",
       "",
       "const ${1:${TM_FILENAME_BASE}} = (props: Props) => {",
@@ -103,8 +101,6 @@
   "typescriptReactArrowFunctionComponent": {
     "prefix": "tsrafc",
     "body": [
-      "import React from 'react'",
-      "",
       "type Props = {}",
       "",
       "const ${1:${TM_FILENAME_BASE}} = (props: Props) => {",
@@ -224,8 +220,6 @@
   "reactArrowFunctionComponent": {
     "prefix": "rafc",
     "body": [
-      "import React from 'react'",
-      "",
       "export const ${1:${TM_FILENAME_BASE}} = () => {",
       "  return (",
       "    <div>${1:first}</div>",
@@ -238,7 +232,6 @@
   "reactArrowFunctionComponentWithPropTypes": {
     "prefix": "rafcp",
     "body": [
-      "import React from 'react'",
       "import PropTypes from 'prop-types'",
       "",
       "const ${1:${TM_FILENAME_BASE}} = props => {",
@@ -256,8 +249,6 @@
   "reactArrowFunctionExportComponent": {
     "prefix": "rafce",
     "body": [
-      "import React from 'react'",
-      "",
       "const ${1:${TM_FILENAME_BASE}} = () => {",
       "  return (",
       "    <div>${1:first}</div>",
