@@ -1,3 +1,58 @@
+My snippets, forked from [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets).
+
+**Below is taken from the [LuaSnip doc.md](https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md) on how to setup the VSCode like snippets:**
+
+# LOADERS
+
+Luasnip is capable of loading snippets from different formats, including both
+the well-established VSCode and SnipMate format, as well as plain Lua files for
+snippets written in Lua.
+
+All loaders share a similar interface:
+```lua
+require("luasnip.loaders.from_{vscode,snipmate,lua}").{lazy_,}load(opts:table|nil)
+```
+
+where `opts` can contain the following keys:
+
+- `paths`: List of paths to load. Can be a table, or a single
+  comma-separated string.
+  The paths may begin with `~/` or `./` to indicate that the path is
+  relative to your `$HOME` or to the directory where your `$MYVIMRC` resides
+  (useful to add your snippets).  
+  If not set, `runtimepath` is searched for
+  directories that contain snippets. This procedure differs slightly for
+  each loader:
+  - `lua`: the snippet-library has to be in a directory named
+    `"luasnippets"`.
+  - `snipmate`: similar to lua, but the directory has to be `"snippets"`.
+  - `vscode`: any directory in `runtimepath` that contains a
+    `package.json` contributing snippets.
+- `exclude`: List of languages to exclude, empty by default.
+- `include`: List of languages to include, includes everything by default.
+- `{override,default}_priority`: These keys are passed straight to the
+  [`add_snippets`](#api-reference)-calls and can therefore change the priority
+  of snippets loaded from some colletion (or, in combination with
+  `{in,ex}clude`, only some of its snippets).
+
+While `load` will immediately load the snippets, `lazy_load` will defer loading until
+the snippets are actually needed (whenever a new buffer is created, or the
+filetype is changed luasnip actually loads `lazy_load`ed snippets for the
+filetypes associated with this buffer. This association can be changed by
+customizing `load_ft_func` in `setup`: the option takes a function that, passed
+a `bufnr`, returns the filetypes that should be loaded (`fn(bufnr) -> filetypes
+(string[])`)).
+
+All of the loaders support reloading, so simply editing any file contributing
+snippets will reload its snippets (only in the session the file was edited in;
+we use `BufWritePost` for reloading, not some lower-level mechanism).
+
+For easy editing of these files, LuaSnip provides a [`vim.ui.select`-based
+dialog](#edit_snippets) where first the filetype, and then the file can be
+selected.
+
+**The rest of this is the original read me from the forked project:**
+
 # Friendly Snippets
 
 Snippets collection for a set of different programming languages for faster development.
